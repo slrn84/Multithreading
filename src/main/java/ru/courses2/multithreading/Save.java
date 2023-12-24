@@ -1,32 +1,18 @@
 package ru.courses2.multithreading;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.util.Objects;
+@Setter @Getter @ToString
+public class Save<V> {
+    private final String object;
+    private long timeLife;
+    private V value;
 
-public class Save<T> {
-    private final T object;
-    public Save(T object) {
+    public Save(String object, long timeLife, V value) {
         this.object = object;
-    }
-    public Object getObject() {
-        return object;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Save save)) return false;
-        return Objects.equals(getObject(), save.getObject());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getObject());
-    }
-
-    @Override
-    public String toString() {
-        return "Save{" +
-                "object=" + object +
-                '}';
+        this.timeLife = timeLife;
+        this.value = value;
     }
 }
